@@ -1,5 +1,3 @@
-
-
 function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_a', event.alpha);
   updateFieldIfNotNull('Orientation_b', event.beta);
@@ -7,14 +5,13 @@ function handleOrientation(event) {
 }
 
 
-function updateFieldIfNotNull(fieldName, value, precision=10){
+function updateFieldIfNotNull(fieldName, value, precision=1){
   if (value != null)
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
 function handleMotion(event) {
-  updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-
+  let pump_button = document.getElementById("Inflate");
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 }
 

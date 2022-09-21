@@ -12,16 +12,12 @@
     <script src="/script.js" defer></script>
   </head>
   <body>
-  <button id = "StartGame">
-    Start Game!
-    </button>
-    <p>
-      Acceleration with gravity
-    </p>
-    <span id="Accelerometer_gz">0</span>
-        <p>
-      Acceleration without gravity
-    </p>
+    <button id="StartGame">Start Game!</button>
+    <p>Acceleration without gravity</p>
     <span id="Accelerometer_z">0</span>
+    <p>
+      
+    </p>
+    <button id="Inflate" ontouchstart="updateFieldIfNotNull('Accelerometer_z', event.acceleration.z)">Inflate!</button>
   </body>
 </html>
