@@ -10,10 +10,11 @@ function updateFieldIfNotNull(fieldName, value, precision=1){
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
+
 function handleMotion(event) {
-  let pump_button = document.getElementById("Inflate");
   updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 }
+
 
 let is_running = false;
 let demo_button = document.getElementById("StartGame");
