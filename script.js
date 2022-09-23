@@ -1,7 +1,6 @@
 /*
 Checks to see if button is held and prevents the text selection from popping up
 */
-
 let button_held = false;
 let inflate_button = document.getElementById("Inflate");
 inflate_button.addEventListener("touchstart", (event) => {
@@ -14,21 +13,19 @@ inflate_button.addEventListener("touchend", (event) => {
 });
 
 let counter = 0;
-function updateFieldIfNotNull(fieldName, value, precision = 1) {
-  if (value != null)
-    document.getElementById(fieldName).innerHTML = value.toFixed(precision);
+function trackPumps(fieldName, value, precision = 1) {
+  document.getElementById('counter').innerHTML = counter
+  document.getElementById(fieldName).innerHTML = value.toFixed(precision);
+  if (value < -25)
+    {
+      counter++
+    }
 }
 
 function handleMotion(event) {
   if (button_held) {
-    updateFieldIfNotNull("Accelerometer_z", event.acceleration.z);
+    trackPumps("Accelerometer_z", event.acceleration.z);
   }
-}
-
-function handleOrientation(event) {
-  updateFieldIfNotNull("Orientation_a", event.alpha);
-  updateFieldIfNotNull("Orientation_b", event.beta);
-  updateFieldIfNotNull("Orientation_g", event.gamma);
 }
 
 let is_running = false;
@@ -45,14 +42,12 @@ demo_button.onclick = function (e) {
 
   if (is_running) {
     window.removeEventListener("devicemotion", handleMotion);
-    window.removeEventListener("deviceorientation", handleOrientation);
     demo_button.innerHTML = "Start demo";
     demo_button.classList.add("btn-success");
     demo_button.classList.remove("btn-danger");
     is_running = false;
   } else {
     window.addEventListener("devicemotion", handleMotion);
-    window.addEventListener("deviceorientation", handleOrientation);
     document.getElementById("StartGame").innerHTML = "End Game";
     demo_button.classList.remove("btn-success");
     demo_button.classList.add("btn-danger");
