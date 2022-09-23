@@ -41,12 +41,16 @@ demo_button.onclick = function (e) {
   }
 
   if (is_running) {
+    counter = 0
+    document.getElementById('counter').innerHTML = "0";
     window.removeEventListener("devicemotion", handleMotion);
     demo_button.innerHTML = "Start demo";
     demo_button.classList.add("btn-success");
     demo_button.classList.remove("btn-danger");
     is_running = false;
   } else {
+    counter = 0
+    document.getElementById('counter').innerHTML = "0";
     window.addEventListener("devicemotion", handleMotion);
     document.getElementById("StartGame").innerHTML = "End Game";
     demo_button.classList.remove("btn-success");
