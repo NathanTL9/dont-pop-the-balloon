@@ -4,17 +4,14 @@ function handleOrientation(event) {
   updateFieldIfNotNull('Orientation_g', event.gamma);
 }
 
-
 function updateFieldIfNotNull(fieldName, value, precision=1){
   if (value != null)
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
 }
 
-
 function handleMotion(event) {
-  updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+  document.getElementById("Inflate").ontouchstart = function() {updateFieldIfNotNull('Accelerometer_z', event.acceleration.z)};
 }
-
 
 let is_running = false;
 let demo_button = document.getElementById("StartGame");
