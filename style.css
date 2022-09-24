@@ -25,3 +25,12 @@ video {
   height: auto;
   max-width: 100%;
 }
+
+#balloonPump {
+  display: inline-block;
+}
+
+img{
+  width: 10;
+  height: 10;
+}
