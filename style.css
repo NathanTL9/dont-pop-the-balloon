@@ -19,18 +19,19 @@ body {
   line-height: 1.5;
 }
 
-/* images and videos max out at full width */
-img,
-video {
-  height: auto;
-  max-width: 100%;
-}
-
 #balloonPump {
-  display: inline-block;
+  display: inline;
 }
 
 img{
-  width: 10;
-  height: 10;
+  width: 100px;
+  height: 100px;
 }
+
+#Inflate{
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  right: 0;
+}
+

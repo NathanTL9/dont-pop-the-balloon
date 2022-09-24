@@ -12,19 +12,27 @@ inflate_button.addEventListener("touchend", (event) => {
   event.returnValue = false;
 });
 
+let popped = false
+let numOfPumps = 0;
 let counter = 0;
-function trackPumps(fieldName, value, precision = 1) {
+function trackPumps(value, precision = 1) {
   document.getElementById('counter').innerHTML = counter
-  document.getElementById(fieldName).innerHTML = value.toFixed(precision);
   if (value < -25)
     {
-      counter++
+      if(counter > numOfPumps)
+        {
+          popped = true
+        }
+      else
+        {
+            counter++
+        }
     }
 }
 
 function handleMotion(event) {
   if (button_held) {
-    trackPumps("Accelerometer_z", event.acceleration.z);
+    trackPumps(event.acceleration.z);
   }
 }
 
