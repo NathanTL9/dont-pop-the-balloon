@@ -58,3 +58,9 @@ demo_button.onclick = function (e) {
     is_running = true;
   }
 };
+
+let menu_button = document.getElementById("MainMenu");
+menu_button.onclick = function (e) {
+  e.preventDefault();
+//return to main menu
+};
