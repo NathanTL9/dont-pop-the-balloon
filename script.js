@@ -56,6 +56,7 @@ demo_button.onclick = function (e) {
   } else {
     counter = 0;
     numOfPumps = Math.floor(Math.random() * 50) + 20;
+    document.getElementById("gameState").innerHTML = "Number of pumps";
     document.getElementById("counter").innerHTML = "0";
     window.addEventListener("devicemotion", handleMotion);
     document.getElementById("StartGame").innerHTML = "End Game";
