@@ -136,7 +136,7 @@ function trackPumps(value, precision = 1) {
 }
 
 function handleMotion(event) {
-    document.getElementById("testText").style.display = "block";
+    //document.getElementById("testText").style.display = "block";
     console.log("Handling motion");
     if (buttonHeld) {
         trackPumps(event.acceleration.z);
