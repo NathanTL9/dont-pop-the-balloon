@@ -7,6 +7,20 @@ document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
 window.addEventListener("devicemotion", handleMotion);
 
+document.getElementById("begin").onclick = function (e) {
+    console.log("The begin button was pressed");
+    e.preventDefault();
+
+    if (
+        DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+        DeviceMotionEvent.requestPermission();
+    }
+    counter = 0;
+    numOfPumps = Math.floor(Math.random() * 70) + 20;
+};
+
 // Setting up canvas
 document.getElementById("canvas").width = window.innerWidth;
 document.getElementById("canvas").height = window.innerHeight;
@@ -106,9 +120,6 @@ function trackPumps(value, precision = 1) {
             console.log("The balloon popped!");
         } else {
             counter++;
-            if (!buttonHeld) {
-                return;
-            }
             balloonFill += 0.1;
         
             if (parallax) {
@@ -126,21 +137,8 @@ function trackPumps(value, precision = 1) {
 
 function handleMotion(event) {
     document.getElementById("testText").style.display = "block";
+    console.log("Handling motion");
     if (buttonHeld) {
         trackPumps(event.acceleration.z);
     }
 }
-
-document.getElementById("begin").onclick = function (e) {
-    console.log("The begin button was pressed");
-    e.preventDefault();
-
-    if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-        DeviceMotionEvent.requestPermission();
-    }
-    counter = 0;
-    numOfPumps = Math.floor(Math.random() * 70) + 20;
-};
