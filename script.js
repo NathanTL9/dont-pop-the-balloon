@@ -99,13 +99,6 @@ function pageReleased() {
     console.log("Testing over");
 }
 
-function handleMotion(event) {
-    document.getElementById("testText").style.display = "block";
-    if (buttonHeld) {
-        trackPumps(event.acceleration.z);
-    }
-}
-
 function trackPumps(value, precision = 1) {
     if (value < -25) {
         if (counter > numOfPumps) {
@@ -128,6 +121,13 @@ function trackPumps(value, precision = 1) {
                 houseHeight += 0.5;
             }
         }
+    }
+}
+
+function handleMotion(event) {
+    document.getElementById("testText").style.display = "block";
+    if (buttonHeld) {
+        trackPumps(event.acceleration.z);
     }
 }
 
