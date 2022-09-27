@@ -100,6 +100,7 @@ function pageReleased() {
 }
 
 function handleMotion(event) {
+    document.getElementById("testText").style.display = "block";
     if (buttonHeld) {
         trackPumps(event.acceleration.z);
     }
