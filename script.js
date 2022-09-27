@@ -5,7 +5,6 @@ document.addEventListener("touchstart", pageClicked);
 document.addEventListener("touchend", pageReleased);
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
-window.addEventListener("devicemotion", handleMotion);
 
 document.getElementById("begin").onclick = function (e) {
     console.log("The begin button was pressed");
@@ -19,6 +18,7 @@ document.getElementById("begin").onclick = function (e) {
     }
     counter = 0;
     numOfPumps = Math.floor(Math.random() * 70) + 20;
+    window.addEventListener("devicemotion", handleMotion);
 };
 
 // Setting up canvas
@@ -136,9 +136,9 @@ function trackPumps(value, precision = 1) {
 }
 
 function handleMotion(event) {
-    //document.getElementById("testText").style.display = "block";
-    console.log("Handling motion");
     if (buttonHeld) {
+        document.getElementById("testText").style.display = "block";
+        console.log("Handling motion");
         trackPumps(event.acceleration.z);
     }
 }
