@@ -20,6 +20,8 @@ let mountainPos = 0.1;
 let parallax = false;
 let numOfPumps = 0;
 let counter = 0;
+let popped = false;
+let firstClick = true;
 
 resizeCanvas();
 window.requestAnimationFrame(gameLoop);
@@ -30,22 +32,8 @@ function gameLoop() {
     window.requestAnimationFrame(gameLoop);
 }
 
-begin.onclick = function (e) {
-    e.preventDefault();
-
-    if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-    ) {
-        DeviceMotionEvent.requestPermission();
-    }
-    counter = 0;
-    numOfPumps = Math.floor(Math.random() * 70) + 20;
-    is_running = true;
-};
-
 function tick() {
-    if (!buttonHeld) {
+    if (!buttonHeld || buttonHeld) {
         return;
     }
     balloonFill += 0.1;
@@ -124,6 +112,34 @@ function trackPumps(value, precision = 1) {
             console.log("The balloon popped!");
         } else {
             counter++;
+            if (!buttonHeld) {
+                return;
+            }
+            balloonFill += 0.1;
+        
+            if (parallax) {
+                grassPos += 0.5;
+                mountainPos += 0.2;
+                if (houseHeight > window.innerHeight / 20) {
+                    houseHeight -= 0.1;
+                }
+            } else {
+                houseHeight += 0.5;
+            }
         }
     }
 }
+
+document.getElementById("begin").onclick = function (e) {
+    console.log("The begin button was pressed");
+    e.preventDefault();
+
+    if (
+        DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+        DeviceMotionEvent.requestPermission();
+    }
+    counter = 0;
+    numOfPumps = Math.floor(Math.random() * 70) + 20;
+};

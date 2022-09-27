@@ -1,39 +1,26 @@
-/* a minimalist set of CSS resets */
-
-/* default to border-box */
-html {
-  box-sizing: border-box;
-  font-size: 16px;
+html, body {
+    margin: 0; height: 100%; overflow: hidden
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+.begin {
+    position: absolute;
 }
 
-/* adjust typography defaults */
-body {
-  margin: 1rem;
-  font-family: sans-serif;
-  line-height: 1.5;
+.offscreen {
+    position: absolute;
+    left: -10000px;
 }
 
-#balloonPump {
-  display: inline-block;
+.house {
+    position: absolute;
+    image-rendering: pixelated;
+    height: 33%;
+    left: 33%;
+    bottom: 1%;
 }
 
-img{
-  width: 100px;
-  height: 100px;
+.balloon {
+    position: absolute;
+    image-rendering: pixelated;
+    height: 10%;
 }
-
-#Inflate{
-  width: 300px;
-  height: 300px;
-  position: fixed;
-  right: 0;
-}
-
-
-
