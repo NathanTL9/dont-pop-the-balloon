@@ -2,24 +2,10 @@
 window.addEventListener("resize", resizeCanvas);
 let buttonHeld = false;
 
-/*
 document.addEventListener("touchstart", pageClicked);
 document.addEventListener("touchend", pageReleased);
-*/
-
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
-
-
-document.addEventListener("touchend", (event) => {
-  event.pageClicked();
-  event.preventDefault = false;
-});
-                             
-document.addEventListener("touchend", (event) => {
-  event.pageReleased();
-  event.preventDefault = false;
-});
 
 
 // Setting up canvas
@@ -159,9 +145,9 @@ function trackPumps(value) {
 }
 
 function handleMotion(event) {
-    //if (buttonHeld) {
+    if (buttonHeld) {
         document.getElementById("testText").style.display = "block";
         console.log("Handling motion");
         trackPumps(event.acceleration.z);
-    //}
+    }
 }

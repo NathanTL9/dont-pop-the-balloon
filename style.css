@@ -35,3 +35,28 @@ html, body {
     image-rendering: pixelated;
     height: 10%;
 }
+
+button.playerbutton {
+  background-color: white;
+  border-color: #c60129;
+  border-radius: 7px;
+  color: black;
+  padding: 15px;
+  margin-left: 40px;
+  position: relative;
+  right: 20px;
+  text-align: center;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+button.playerbutton:hover {
+  background-color: #c60129;
+  color: black;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
