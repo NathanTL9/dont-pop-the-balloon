@@ -63,7 +63,7 @@ document.getElementById("begin").onclick = function (e) {
   balloonImage = document.getElementById("balloon");
   document.getElementById("poppedBalloon").innerHTML = "";
 
-  numOfPumps = Math.floor(Math.random() * 50) + 55;
+  numOfPumps = Math.floor(Math.random() * 50) + 65;
   document.getElementById("begin").innerHTML = "Restart";
   window.addEventListener("devicemotion", handleMotion);
 };
@@ -86,23 +86,24 @@ function tick() {
   if (popped) {
     if (balloonAnim > 12) {
       drawBalloon = false;
-      if (mountainPos > 0.1) {
-        mountainVel -= 0.1;
-        mountainPos += mountainVel;
-      } else {
-        mountainPos = 0.1;
-      }
-      if (grassPos > 0.0) {
-        grassVel -= 0.1;
-        grassPos += grassVel;
-      } else {
-        grassPos = 0.0;
-      }
       if (houseHeight > 0.0) {
         houseVel -= 0.1;
-        houseHeight += mountainVel;
+        houseHeight += houseVel;
       } else {
         houseHeight = 0.0;
+      }
+      if (mountainPos > 0.1 && houseHeight == 0.0) {
+        houseVel -= 0.1;
+        mountainPos += houseVel;
+      } else if (houseHeight == 0.0) {
+        mountainPos = 0.1;
+      }
+      if (mountainPos < 1.0) {
+        houseVel -= 0.1;
+        grassPos += houseVel;
+      }
+      if (grassPos < 0.0) {
+        grassPos = 0.0;
       }
     } else if (balloonAnim > 9) {
       balloonImage = document.getElementById("balloon_pop3");
