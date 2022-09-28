@@ -62,6 +62,7 @@ document.getElementById("begin").onclick = function (e) {
   balloonAnim = 0;
   balloonImage = document.getElementById("balloon");
   document.getElementById("poppedBalloon").innerHTML = "";
+  document.getElementById("text-container").style.display = "none";
 
   numOfPumps = Math.floor(Math.random() * 25) + 100;
   document.getElementById("begin").innerHTML = "Restart";
@@ -284,7 +285,7 @@ function trackPumps(value) {
       popped = true;
       console.log("The balloon popped!");
       document.getElementById("poppedBalloon").innerHTML = "BALLOON POPPED!";
-      docume
+      document.getElementById("text-container").style.display = "block";
 
     } else {
       counter++;
