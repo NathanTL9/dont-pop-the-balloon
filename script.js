@@ -283,7 +283,8 @@ function trackPumps(value) {
     if (counter > numOfPumps) {
       popped = true;
       console.log("The balloon popped!");
-      document.getElementById("poppedBalloon").innerHTML = "You popped the balloon";
+      document.getElementById("poppedBalloon").innerHTML = "BALLOON POPPED!";
+      docume
 
     } else {
       counter++;
