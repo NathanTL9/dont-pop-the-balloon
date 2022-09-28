@@ -90,17 +90,26 @@ function gameLoop() {
 function tick() {
   if (!popped) {
     if (promptTimer > 100) {
-      console.log("The screen should appear");
-      document.getElementById("holdScreen").style.display = "block";
-      document.getElementById("prompt-container").style.display = "block";
+      console.log("Opacity: " + document.getElementById("holdScreen").style.opacity);
+      //document.getElementById("holdScreen").style.display = "block";
+      //document.getElementById("prompt-container").style.display = "block";
+      if (document.getElementById("holdScreen").style.opacity < 100) {
+        //document.getElementById("holdScreen").style.opacity = parseInt(document.getElementById("holdScreen").style.opacity) + 1;
+        document.getElementById("prompt-container").style.opacity = parseInt(document.getElementById("prompt-container").style.opacity) + 1;
+      } else {
+        //document.getElementById("holdScreen").style.opacity = 100;
+        document.getElementById("prompt-container").style.opacity = 100;
+      }
     }
   }
   promptTimer++;
   
   if (buttonHeld) {
     promptTimer = 0;
-      document.getElementById("holdScreen").style.display = "none";
-      document.getElementById("prompt-container").style.display = "none";
+      //document.getElementById("holdScreen").style.display = "none";
+      //document.getElementById("prompt-container").style.display = "none";
+      //document.getElementById("holdScreen").style.opacity = 0;
+      document.getElementById("prompt-container").style.opacity = 0;
   }
   
   
