@@ -41,7 +41,7 @@ document.getElementById("begin").onclick = function (e) {
   counter = 0;
   popped = false;
 
-  numOfPumps = Math.floor(Math.random() * 50) + 15;
+  numOfPumps = Math.floor(Math.random() * 500) + 15;
   window.addEventListener("devicemotion", handleMotion);
 };
 
@@ -129,16 +129,16 @@ function trackPumps(value) {
             console.log("The balloon popped!");
         } else {
             counter++;
-            balloonFill += 0.1;
+            balloonFill += 1.0;
         
             if (parallax) {
-                grassPos += 0.5;
-                mountainPos += 0.2;
+                grassPos += 5.0;
+                mountainPos += 2.0;
                 if (houseHeight > window.innerHeight / 20) {
-                    houseHeight -= 0.1;
+                    houseHeight -= 1.0;
                 }
             } else {
-                houseHeight += 0.5;
+                houseHeight += 5.0;
             }
         }
     }
@@ -146,7 +146,6 @@ function trackPumps(value) {
 
 function handleMotion(event) {
     if (buttonHeld) {
-        document.getElementById("testText").style.display = "block";
         console.log("Handling motion");
         trackPumps(event.acceleration.z);
     }

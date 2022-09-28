@@ -1,24 +1,31 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Up House</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-    </head>
-    <body class = "prevent-select">
-        <button id="begin" class="begin">Begin</button>
-        <h1 id="testText" class="testText">THIS IS WORKING</h1>
-        <canvas id="canvas">
-            Something went wrong :(
-        </canvas>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/mountains.png?v=1664249003908" id="mountains" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/grass.png?v=1664249012516" id="grass" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/house.png?v=1664249009828" id="house" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/balloon_r.png?v=1664249015792" id="balloon" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/balloon_r_pop0.png?v=1664333039888" id="balloon_pop0" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/balloon_r_pop1.png?v=1664333070992" id="balloon_pop1" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/balloon_r_pop2.png?v=1664333073458" id="balloon_pop2" class="offscreen"/>
-        <img src="https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/balloon_r_pop3.png?v=1664333076340" id="balloon_pop3" class="offscreen"/>
-        <script src="script.js"></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimal-ui"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <title>Don't Pop the Balloon</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body style="background-color: #77d6ff; text-align: center">
+    <div class="wrapper">
+      <h1>Don't Pop the Balloon!</h1>
+      <h2 style="color: #cd0027">Rules:</h2>
+      <p>1. Take turns taking one pump while holding down on the screen</p>
+      <p>2. Pump until the balloon pops</p>
+      <p>3. If the balloon pops on your turn, you lose!</p>
+      <button
+        id="startGame"
+        class="playerbutton"
+        onclick="document.location='game.html'"
+      >
+        Start game
+      </button>
+    </div>
+  </body>
 </html>

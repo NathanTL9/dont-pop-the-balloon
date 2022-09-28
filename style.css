@@ -1,39 +1,48 @@
-html, body {
-    margin: 0; height: 100%; overflow: hidden
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .begin {
-    position: absolute;
-    width: 5%;
-    height: 10%;
+  display: inline;
+  background-color: white;
+  border-color: #c60129;
+  border-radius: 7px;
+  color: black;
+}
+button.begin:hover {
+  background-color: #c60129;
+  color: black;
 }
 
 .testText {
-    position: absolute;
-    display: none;
-    top: 50%;
-    left: 50%;
-    font-size: 10vh;
-    color: greenyellow;
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  font-size: 10vh;
+  color: greenyellow;
 }
 
 .offscreen {
-    position: absolute;
-    left: -10000px;
+  position: absolute;
+  left: -10000px;
 }
 
 .house {
-    position: absolute;
-    image-rendering: pixelated;
-    height: 33%;
-    left: 33%;
-    bottom: 1%;
+  position: absolute;
+  image-rendering: pixelated;
+  height: 33%;
+  left: 33%;
+  bottom: 1%;
 }
 
 .balloon {
-    position: absolute;
-    image-rendering: pixelated;
-    height: 10%;
+  position: absolute;
+  image-rendering: pixelated;
+  height: 10%;
 }
 
 button.playerbutton {
