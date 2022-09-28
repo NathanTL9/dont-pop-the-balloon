@@ -29,6 +29,7 @@ let drawBalloon = true;
 let firstClick = true;
 let balloonAnim = 0;
 let balloonImage = document.getElementById("balloon");
+let explosionSound = new Audio("https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/explosion.wav?v=1664337157841");
 
 document.getElementById("begin").onclick = function (e) {
   e.preventDefault();
@@ -61,7 +62,7 @@ document.getElementById("begin").onclick = function (e) {
   balloonAnim = 0;
   balloonImage = document.getElementById("balloon");
 
-  numOfPumps = Math.floor(Math.random() * 100) + 25;
+  numOfPumps = Math.floor(Math.random() * 50) + 25;
   document.getElementById("begin").innerHTML = "Restart";
   window.addEventListener("devicemotion", handleMotion);
 };
@@ -91,6 +92,7 @@ function tick() {
     } else if (balloonAnim > 3) {
       balloonImage = document.getElementById("balloon_pop1");
     } else if (balloonAnim >= 0) {
+      explosionSound.play();
       balloonImage = document.getElementById("balloon_pop0");
     }
     balloonAnim++;
@@ -257,6 +259,8 @@ function trackPumps(value) {
     if (counter > numOfPumps) {
       popped = true;
       console.log("The balloon popped!");
+      document.getElementById("poppedBalloon").innerHTML = "You popped the balloon";
+
     } else {
       counter++;
       balloonFillVel = 2.0;
