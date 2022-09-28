@@ -65,7 +65,7 @@ document.getElementById("begin").onclick = function (e) {
   promptTimer = 0;
   running = true;
   balloonImage = document.getElementById("balloon");
-  document.getElementById("poppedBalloon").innerHTML = "Hold screen and pump!";
+  //document.getElementById("poppedBalloon").innerHTML = "Hold screen and pump!";
   document.getElementById("text-container").style.display = "block";
 
   numOfPumps = Math.floor(Math.random() * 25) + 100;
@@ -89,17 +89,18 @@ function gameLoop() {
 
 function tick() {
   if (!popped) {
-    if (promptTimer > 10) {
-      document.getElementById("holdScreen").display = "block";
-      document.getElementById("prompt-container").display = "block";
+    if (promptTimer > 100) {
+      console.log("The screen should appear");
+      document.getElementById("holdScreen").style.display = "block";
+      document.getElementById("prompt-container").style.display = "block";
     }
   }
   promptTimer++;
   
   if (buttonHeld) {
     promptTimer = 0;
-    document.getElementById("holdScreen").display = "none";
-    document.getElementById("prompt-container").display = "none";
+      document.getElementById("holdScreen").style.display = "none";
+      document.getElementById("prompt-container").style.display = "none";
   }
   
   
