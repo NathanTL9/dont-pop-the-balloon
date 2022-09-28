@@ -56,7 +56,7 @@ document.getElementById("begin").onclick = function (e) {
    popped = false;
    firstClick = true;
   
-  numOfPumps = Math.floor(Math.random() * 500) + 15;
+  numOfPumps = Math.floor(Math.random() * 100) + 25;
   document.getElementById("begin").innerHTML = "Restart";
   window.addEventListener("devicemotion", handleMotion);
 };
@@ -66,6 +66,7 @@ document.getElementById("end").onclick = function (e) {
     window.removeEventListener("devicemotion", handleMotion);
     window.location.href = document.location='index.html';
 };
+
 resizeCanvas();
 window.requestAnimationFrame(gameLoop);
 
@@ -76,6 +77,12 @@ function gameLoop() {
 }
 
 function tick() {
+  if (popped) {
+    
+    return;
+  }
+  
+  console.log("Fill vel:" + balloonFillVel);
     balloonFill += balloonFillVel;
     grassPos += grassVel;
     mountainPos += mountainVel;
@@ -142,32 +149,32 @@ function resizeCanvas() {
 
 function pageClicked() {
     buttonHeld = true;
-    console.log("Testing");
+    //console.log("Testing");
 }
 
 function pageReleased() {
     buttonHeld = false;
-    console.log("Testing over");
+    //console.log("Testing over");
 }
 
 function trackPumps(value) {
-    console.log("Motion val:" + value);
+    //console.log("Motion val:" + value);
     if (value < -25) {
         if (counter > numOfPumps) {
             popped = true;
             console.log("The balloon popped!");
         } else {
             counter++;
-            balloonFillVel = 0.2;
+            balloonFillVel = 2.0;
         
             if (parallax) {
-                grassVel = 1.0;
-                mountainVel = 0.4;
+                grassVel = 5.0;
+                mountainVel = 4.0;
                 if (houseHeight > window.innerHeight / 20) {
-                    houseVel = -0.2;
+                    houseVel = -2.0;
                 }
             } else {
-                houseHeight = 1.0;
+                houseVel = 5.0;
             }
         }
     }
