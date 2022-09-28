@@ -28,6 +28,8 @@ let counter = 0;
 let popped = false;
 let firstClick = true;
 
+let balloonImage = document.getElementById("balloon");
+
 document.getElementById("begin").onclick = function (e) {
   e.preventDefault();
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
