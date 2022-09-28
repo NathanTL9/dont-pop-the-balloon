@@ -6,8 +6,6 @@ document.addEventListener("touchend", pageReleased);
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
 
-window.addEventListener("devicemotion", handleMotion);
-
 // Setting up canvas
 document.getElementById("canvas").width = window.innerWidth;
 document.getElementById("canvas").height = window.innerHeight;
@@ -23,6 +21,22 @@ let numOfPumps = 0;
 let counter = 0;
 let popped = false;
 let firstClick = true;
+
+document.getElementById("begin").onclick = function (e) {
+  e.preventDefault();
+
+  if (
+    DeviceMotionEvent &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    DeviceMotionEvent.requestPermission();
+  }
+  counter = 0;
+  popped = false;
+
+  numOfPumps = Math.floor(Math.random() * 50) + 15;
+  window.addEventListener("devicemotion", handleMotion);
+};
 
 resizeCanvas();
 window.requestAnimationFrame(gameLoop);
@@ -100,7 +114,7 @@ function pageReleased() {
     console.log("Testing over");
 }
 
-function trackPumps(value, precision = 1) {
+function trackPumps(value) {
     console.log("Motion val:" + value);
     if (value < -25) {
         if (counter > numOfPumps) {
@@ -124,9 +138,9 @@ function trackPumps(value, precision = 1) {
 }
 
 function handleMotion(event) {
-    if (buttonHeld) {
+    //if (buttonHeld) {
         document.getElementById("testText").style.display = "block";
         console.log("Handling motion");
         trackPumps(event.acceleration.z);
-    }
+    //}
 }
