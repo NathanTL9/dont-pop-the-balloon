@@ -5,14 +5,50 @@ body {
   overflow: hidden;
 }
 
-.begin {
-  display: inline;
+button.begin {
+  padding: 15px;
+  position: absolute;
   background-color: white;
   border-color: #c60129;
   border-radius: 7px;
   color: black;
+  left: 0;
 }
 button.begin:hover {
+  background-color: #c60129;
+  color: black;
+}
+
+button.end {
+  padding: 15px;
+  position: absolute;
+  background-color: white;
+  border-color: #c60129;
+  border-radius: 7px;
+  color: black;
+  right: 0;
+}
+
+button.end:hover {
+  background-color: #c60129;
+  color: black;
+}
+
+button.start {
+  background-color: white;
+  border-color: #c60129;
+  border-radius: 7px;
+  color: black;
+  padding: 15px;
+  margin-left: 40px;
+  position: relative;
+  right: 20px;
+  text-align: center;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+button.start:hover {
   background-color: #c60129;
   color: black;
 }
@@ -45,24 +81,7 @@ button.begin:hover {
   height: 10%;
 }
 
-button.playerbutton {
-  background-color: white;
-  border-color: #c60129;
-  border-radius: 7px;
-  color: black;
-  padding: 15px;
-  margin-left: 40px;
-  position: relative;
-  right: 20px;
-  text-align: center;
-  font-size: 16px;
-  transition-duration: 0.4s;
-}
 
-button.playerbutton:hover {
-  background-color: #c60129;
-  color: black;
-}
 
 .prevent-select {
   -webkit-user-select: none; /* Safari */

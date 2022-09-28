@@ -15,9 +15,13 @@ let ctx = document.getElementById("canvas").getContext("2d");
 
 // Game variables
 let balloonFill = 100;
+let balloonFillVel = 0;
 let houseHeight = 0;
+let houseVel = 0;
 let grassPos = 0;
+let grassVel = 0;
 let mountainPos = 0.1;
+let mountainVel = 0;
 let parallax = false;
 let numOfPumps = 0;
 let counter = 0;
@@ -38,13 +42,30 @@ document.getElementById("begin").onclick = function (e) {
       // handle regular non iOS 13+ devices
     }
 
-  counter = 0;
-  popped = false;
-
+   balloonFill = 100;
+   balloonFillVel = 0;
+   houseHeight = 0;
+   houseVel = 0;
+   grassPos = 0;
+   grassVel = 0;
+   mountainPos = 0.1;
+   mountainVel = 0;
+   parallax = false;
+   numOfPumps = 0;
+   counter = 0;
+   popped = false;
+   firstClick = true;
+  
   numOfPumps = Math.floor(Math.random() * 500) + 15;
+  document.getElementById("begin").innerHTML = "Restart";
   window.addEventListener("devicemotion", handleMotion);
 };
 
+
+document.getElementById("end").onclick = function (e) {
+    window.removeEventListener("devicemotion", handleMotion);
+    window.location.href = document.location='index.html';
+};
 resizeCanvas();
 window.requestAnimationFrame(gameLoop);
 
@@ -55,20 +76,28 @@ function gameLoop() {
 }
 
 function tick() {
-    if (!buttonHeld || buttonHeld) {
-        return;
-    }
-    balloonFill += 0.1;
-
-    if (parallax) {
-        grassPos += 0.5;
-        mountainPos += 0.2;
-        if (houseHeight > window.innerHeight / 20) {
-            houseHeight -= 0.1;
-        }
-    } else {
-        houseHeight += 0.5;
-    }
+    balloonFill += balloonFillVel;
+    grassPos += grassVel;
+    mountainPos += mountainVel;
+    houseHeight += houseVel;
+  
+  balloonFillVel -= 0.1;
+  grassVel -= 0.1;
+  mountainVel -= 0.1;
+  houseVel -= 0.1;
+  
+  if (balloonFillVel < 0) {
+    balloonFillVel = 0;
+  }
+  if (grassVel < 0) {
+    grassVel = 0;
+  }
+  if (mountainVel < 0) {
+    mountainVel = 0;
+  }
+  if (houseVel < 0) {
+    houseVel = 0;
+  }
 }
 
 function render() {
@@ -129,16 +158,16 @@ function trackPumps(value) {
             console.log("The balloon popped!");
         } else {
             counter++;
-            balloonFill += 1.0;
+            balloonFillVel = 0.2;
         
             if (parallax) {
-                grassPos += 5.0;
-                mountainPos += 2.0;
+                grassVel = 1.0;
+                mountainVel = 0.4;
                 if (houseHeight > window.innerHeight / 20) {
-                    houseHeight -= 1.0;
+                    houseVel = -0.2;
                 }
             } else {
-                houseHeight += 5.0;
+                houseHeight = 1.0;
             }
         }
     }
@@ -146,7 +175,7 @@ function trackPumps(value) {
 
 function handleMotion(event) {
     if (buttonHeld) {
-        console.log("Handling motion");
+        //console.log("Handling motion");
         trackPumps(event.acceleration.z);
     }
 }
