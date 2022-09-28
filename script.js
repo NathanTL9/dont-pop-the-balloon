@@ -1,10 +1,25 @@
 // Event listeners
 window.addEventListener("resize", resizeCanvas);
 let buttonHeld = false;
+
 document.addEventListener("touchstart", pageClicked);
 document.addEventListener("touchend", pageReleased);
+
+
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
+
+/*
+document.addEventListener("touchend", (event) => {
+  pageClicked();
+  event.returnValue = false;
+});
+                             
+document.addEventListener("touchend", (event) => {
+  pageReleased();
+  event.returnValue = false;
+});
+*/
 
 // Setting up canvas
 document.getElementById("canvas").width = window.innerWidth;
@@ -23,6 +38,7 @@ let popped = false;
 let firstClick = true;
 
 document.getElementById("begin").onclick = function (e) {
+  e.returnValue = false;
   e.preventDefault();
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
       DeviceMotionEvent.requestPermission()
