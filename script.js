@@ -36,6 +36,10 @@ let explosionSound = new Audio(
 );
 
 document.getElementById("begin").onclick = function (e) {
+  /*
+  This section for requesting permissions for motion is from:
+  https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
+  */
   e.preventDefault();
   if (typeof DeviceMotionEvent.requestPermission === "function") {
     DeviceMotionEvent.requestPermission()
@@ -45,8 +49,6 @@ document.getElementById("begin").onclick = function (e) {
         }
       })
       .catch(console.error);
-  } else {
-    // handle regular non iOS 13+ devices
   }
 
   balloonFill = 100;
