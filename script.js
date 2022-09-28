@@ -87,7 +87,7 @@ function gameLoop() {
 }
 
 function tick() {
-  if (!popped) {
+  if (!popped && running) {
     if (promptTimer > 100) {
       if (document.getElementById("holdScreen").style.opacity < 1.0) {
         document.getElementById("holdScreen").style.opacity = parseFloat(document.getElementById("holdScreen").style.opacity) + 0.01;
@@ -278,8 +278,10 @@ function render() {
         balloonSize
       );
     }
-    parallax = true;
   }
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(window.innerWidth / 2, window.innerHeight / 2 - balloonSize, 2, 100);
+    parallax = true;
 }
 
 function resizeCanvas() {
