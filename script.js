@@ -5,6 +5,7 @@ document.addEventListener("touchstart", pageClicked);
 document.addEventListener("touchend", pageReleased);
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
+window.addEventListener("devicemotion", handleMotion);
 
 document.getElementById("begin").onclick = function (e) {
     console.log("The begin button was pressed");
@@ -36,6 +37,15 @@ let numOfPumps = 0;
 let counter = 0;
 let popped = false;
 let firstClick = true;
+
+    if (
+        DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
+        DeviceMotionEvent.requestPermission();
+    }
+    counter = 0;
+    numOfPumps = Math.floor(Math.random() * 70) + 20;
 
 resizeCanvas();
 window.requestAnimationFrame(gameLoop);
@@ -114,6 +124,7 @@ function pageReleased() {
 }
 
 function trackPumps(value, precision = 1) {
+    console.log("Motion val:" + value);
     if (value < -25) {
         if (counter > numOfPumps) {
             popped = true;
