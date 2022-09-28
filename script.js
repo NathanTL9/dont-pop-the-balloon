@@ -6,6 +6,10 @@ document.addEventListener("touchend", pageReleased);
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
 
+/*
+
+*/
+
 // Setting up canvas
 document.getElementById("canvas").width = window.innerWidth;
 document.getElementById("canvas").height = window.innerHeight;
