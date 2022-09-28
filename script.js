@@ -294,7 +294,7 @@ function pageClicked() {
 }
 
 function pageReleased() {
-  document.getElementById("poppedBalloon").innerHTML = "Hold screen and pump!";
+  //document.getElementById("poppedBalloon").innerHTML = "Hold screen and pump!";
   document.getElementById("text-container").style.display = "block";
   buttonHeld = false;
   //console.log("Testing over");
