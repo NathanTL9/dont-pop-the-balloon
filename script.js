@@ -1,13 +1,24 @@
 // Event listeners
 window.addEventListener("resize", resizeCanvas);
 let buttonHeld = false;
+
+
 document.addEventListener("touchstart", pageClicked);
 document.addEventListener("touchend", pageReleased);
+
+
+
 document.addEventListener("mousedown", pageClicked);
 document.addEventListener("mouseup", pageReleased);
 
 /*
-
+pageClicked.addEventListener("touchend", (event) => {
+  event.returnValue = false;
+});
+                             
+pageReleased.addEventListener("touchend", (event) => {
+  event.returnValue = false;
+});
 */
 
 // Setting up canvas
@@ -54,7 +65,7 @@ function gameLoop() {
     tick();
     render();
     window.requestAnimationFrame(gameLoop);
-}
+};
 
 function tick() {
     if (!buttonHeld || buttonHeld) {
@@ -71,7 +82,7 @@ function tick() {
     } else {
         houseHeight += 0.5;
     }
-}
+};
 
 function render() {
     let houseSize = window.innerHeight / 3;
@@ -105,23 +116,23 @@ function render() {
         parallax = true;
     }
 
-}
+};
 
 function resizeCanvas() {
     document.getElementById("canvas").width = window.innerWidth;
     document.getElementById("canvas").height = window.innerHeight;
     ctx.imageSmoothingEnabled = false;
-}
+};
 
 function pageClicked() {
     buttonHeld = true;
     console.log("Testing");
-}
+};
 
 function pageReleased() {
     buttonHeld = false;
     console.log("Testing over");
-}
+};
 
 function trackPumps(value) {
     console.log("Motion val:" + value);
@@ -144,7 +155,7 @@ function trackPumps(value) {
             }
         }
     }
-}
+};
 
 function handleMotion(event) {
     //if (buttonHeld) {
@@ -152,4 +163,4 @@ function handleMotion(event) {
         console.log("Handling motion");
         trackPumps(event.acceleration.z);
     //}
-}
+};
