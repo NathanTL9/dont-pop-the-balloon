@@ -28,6 +28,8 @@ let popped = false;
 let drawBalloon = true;
 let firstClick = true;
 let balloonAnim = 0;
+let promptTimer = 0;
+let running = false;
 let balloonImage = document.getElementById("balloon");
 let explosionSound = new Audio("https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/explosion.wav?v=1664337157841");
 
@@ -60,6 +62,8 @@ document.getElementById("begin").onclick = function (e) {
   drawBalloon = true;
   firstClick = true;
   balloonAnim = 0;
+  promptTimer = 0;
+  running = true;
   balloonImage = document.getElementById("balloon");
   document.getElementById("poppedBalloon").innerHTML = "";
   document.getElementById("text-container").style.display = "none";
@@ -84,6 +88,21 @@ function gameLoop() {
 }
 
 function tick() {
+  if (!popped) {
+    if (promptTimer > 10) {
+      document.getElementById("holdScreen").display = "block";
+      document.getElementById("prompt-container").display = "block";
+    }
+  }
+  promptTimer++;
+  
+  if (buttonHeld) {
+    promptTimer = 0;
+    document.getElementById("holdScreen").display = "none";
+    document.getElementById("prompt-container").display = "none";
+  }
+  
+  
   if (popped) {
     if (balloonAnim > 12) {
       drawBalloon = false;
