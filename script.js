@@ -249,7 +249,7 @@ function render() {
     parallax
   ) {
     if (drawBalloon) {
-      ctx.fillStyle = "#000000";
+      ctx.fillStyle = "#DDDDDD";
       ctx.fillRect(
         window.innerWidth / 2,
         window.innerHeight / 2 - balloonSize / 2 - houseHeight,
@@ -276,7 +276,7 @@ function render() {
     );
   } else {
     if (drawBalloon) {
-      ctx.fillStyle = "#000000";
+      ctx.fillStyle = "#DDDDDD";
       ctx.fillRect(
         window.innerWidth / 2,
         window.innerHeight / 2 - balloonSize / 2,
