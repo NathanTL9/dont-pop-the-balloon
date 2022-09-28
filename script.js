@@ -31,7 +31,9 @@ let balloonAnim = 0;
 let promptTimer = 0;
 let running = false;
 let balloonImage = document.getElementById("balloon");
-let explosionSound = new Audio("https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/explosion.wav?v=1664337157841");
+let explosionSound = new Audio(
+  "https://cdn.glitch.global/8036c376-3ba2-40de-a84b-dfb67b439976/explosion.wav?v=1664337157841"
+);
 
 document.getElementById("begin").onclick = function (e) {
   e.preventDefault();
@@ -67,7 +69,7 @@ document.getElementById("begin").onclick = function (e) {
   balloonImage = document.getElementById("balloon");
   document.getElementById("text-container").style.display = "block";
 
-  numOfPumps = Math.floor(Math.random() * 25) + 100;
+  numOfPumps = Math.floor(Math.random() * 25) + 60;
   document.getElementById("begin").innerHTML = "Restart";
   window.addEventListener("devicemotion", handleMotion);
 };
@@ -90,20 +92,21 @@ function tick() {
   if (!popped && running) {
     if (promptTimer > 100) {
       if (document.getElementById("holdScreen").style.opacity < 1.0) {
-        document.getElementById("holdScreen").style.opacity = parseFloat(document.getElementById("holdScreen").style.opacity) + 0.01;
+        document.getElementById("holdScreen").style.opacity =
+          parseFloat(document.getElementById("holdScreen").style.opacity) +
+          0.01;
       } else {
         document.getElementById("holdScreen").style.opacity = 1;
       }
     }
   }
   promptTimer++;
-  
+
   if (buttonHeld) {
     promptTimer = 0;
     document.getElementById("holdScreen").style.opacity = 0;
   }
-  
-  
+
   if (popped) {
     if (balloonAnim > 12) {
       drawBalloon = false;
@@ -245,14 +248,17 @@ function render() {
       window.innerHeight / 2 - houseSize / 2 ||
     parallax
   ) {
-    ctx.drawImage(
-      document.getElementById("house"),
-      window.innerWidth / 2 - houseSize / 2,
-      window.innerHeight - houseSize - houseHeight,
-      houseSize,
-      houseSize
-    );
     if (drawBalloon) {
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(
+        window.innerWidth / 2,
+        window.innerHeight / 2 - balloonSize / 2 - houseHeight,
+        2,
+        window.innerHeight -
+          houseSize / 2 -
+          houseHeight -
+          (window.innerHeight / 2 - balloonSize / 2 - houseHeight)
+      );
       ctx.drawImage(
         balloonImage,
         window.innerWidth / 2 - balloonSize / 2,
@@ -261,15 +267,25 @@ function render() {
         balloonSize
       );
     }
-  } else {
     ctx.drawImage(
       document.getElementById("house"),
       window.innerWidth / 2 - houseSize / 2,
-      window.innerHeight / 2 - houseSize / 2,
+      window.innerHeight - houseSize - houseHeight,
       houseSize,
       houseSize
     );
+  } else {
     if (drawBalloon) {
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(
+        window.innerWidth / 2,
+        window.innerHeight / 2 - balloonSize / 2,
+        2,
+        window.innerHeight -
+          houseSize / 2 -
+          houseHeight -
+          (window.innerHeight / 2 - balloonSize / 2 - houseHeight)
+      );
       ctx.drawImage(
         balloonImage,
         window.innerWidth / 2 - balloonSize / 2,
@@ -278,10 +294,15 @@ function render() {
         balloonSize
       );
     }
+    ctx.drawImage(
+      document.getElementById("house"),
+      window.innerWidth / 2 - houseSize / 2,
+      window.innerHeight / 2 - houseSize / 2,
+      houseSize,
+      houseSize
+    );
+      parallax = true;
   }
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(window.innerWidth / 2, window.innerHeight / 2 - balloonSize, 2, 100);
-    parallax = true;
 }
 
 function resizeCanvas() {
@@ -311,7 +332,6 @@ function trackPumps(value) {
       console.log("The balloon popped!");
       document.getElementById("poppedBalloon").innerHTML = "BALLOON POPPED!";
       document.getElementById("text-container").style.display = "block";
-
     } else {
       counter++;
       balloonFillVel = 2.0;
