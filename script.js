@@ -61,6 +61,7 @@ document.getElementById("begin").onclick = function (e) {
   firstClick = true;
   balloonAnim = 0;
   balloonImage = document.getElementById("balloon");
+  document.getElementById("poppedBalloon").innerHTML = "";
 
   numOfPumps = Math.floor(Math.random() * 50) + 25;
   document.getElementById("begin").innerHTML = "Restart";
@@ -85,6 +86,9 @@ function tick() {
   if (popped) {
     if (balloonAnim > 12) {
       drawBalloon = false;
+      if (mountainPos > 0.1) {
+        mountainPos -= 0.5;
+      }
     } else if (balloonAnim > 9) {
       balloonImage = document.getElementById("balloon_pop3");
     } else if (balloonAnim > 6) {
