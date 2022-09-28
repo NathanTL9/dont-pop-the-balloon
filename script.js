@@ -65,8 +65,8 @@ document.getElementById("begin").onclick = function (e) {
   promptTimer = 0;
   running = true;
   balloonImage = document.getElementById("balloon");
-  document.getElementById("poppedBalloon").innerHTML = "";
-  document.getElementById("text-container").style.display = "none";
+  document.getElementById("poppedBalloon").innerHTML = "Hold screen and pump!";
+  document.getElementById("text-container").style.display = "block";
 
   numOfPumps = Math.floor(Math.random() * 25) + 100;
   document.getElementById("begin").innerHTML = "Restart";
@@ -288,11 +288,14 @@ function resizeCanvas() {
 }
 
 function pageClicked() {
+  document.getElementById("poppedBalloon").innerHTML = "";
   buttonHeld = true;
   //console.log("Testing");
 }
 
 function pageReleased() {
+  document.getElementById("poppedBalloon").innerHTML = "Hold screen and pump!";
+  document.getElementById("text-container").style.display = "block";
   buttonHeld = false;
   //console.log("Testing over");
 }
