@@ -1,4 +1,4 @@
-CPSC 581 Project by Nathan Lum, Victor Dong, Parker Smith, Michaela Gilchrist
+CPSC 581 Project by Nathan Lum, Victor Dong, Parker Smith, and Michaela Gilchrist
 
 A project which focused on a "button" as the main function
 
